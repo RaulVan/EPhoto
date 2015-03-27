@@ -10,10 +10,14 @@
     <!--Application Resources-->
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ResourceDictionary1.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <!--<FontFamily x:Key="PhoneFontFamilySTCAIYUN">Resources/msyhbd.ttc#微软雅黑</FontFamily>-->
+            <FontFamily x:Key="PhoneFontFamilyBRADHITC">/EasyImages;component/Fonts/Fonts.zip#Bradley Hand ITC</FontFamily>
+            <FontFamily x:Key="PhoneFontFamilyFRSCRIPT">/EasyImages;component/Fonts/Fonts.zip#French Script MT</FontFamily>
+            <FontFamily x:Key="PhoneFontFamilyJOKERMAN">/EasyImages;component/Fonts/Fonts.zip#Jokerman</FontFamily>
+            <FontFamily x:Key="PhoneFontFamilyKUNSTLER">/EasyImages;component/Fonts/Fonts.zip#Kunstler Script</FontFamily>
+            <FontFamily x:Key="PhoneFontFamilyMATURASC">/EasyImages;component/Fonts/Fonts.zip#Matura MT Script Capitals</FontFamily>
+            <FontFamily x:Key="PhoneFontFamilyRAVIE">/EasyImages;component/Fonts/Fonts.zip#Ravie</FontFamily>
+            <FontFamily x:Key="PhoneFontFamilyVLADIMIR">/EasyImages;component/Fonts/Fonts.zip#Vladimir Script</FontFamily>
+            
             
             <local:LocalizedStrings xmlns:local="clr-namespace:EasyImages" x:Key="LocalizedStrings"/>
             <Style x:Key="ImageButtonStyle1" TargetType="Controls:ImageButton">
@@ -51,25 +55,82 @@
             							<VisualState x:Name="Disabled"/>
             						</VisualStateGroup>
             					</VisualStateManager.VisualStateGroups>
-            					<Grid Margin="0" Height="42" Width="42">
+                                <TextBlock Text="{TemplateBinding TextContent}" Foreground="{TemplateBinding Foreground}" FontSize="12" VerticalAlignment="Bottom" FontFamily="Portable User Interface" TextAlignment="Center" />
+                                <Grid Margin="0" Height="42" Width="42">
 
-            						<Image Grid.Row="0" x:Name="ImageBack" Opacity="0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Source="{TemplateBinding ImageSource}">
-            							<Image.RenderTransform>
-            								<CompositeTransform />
-            							</Image.RenderTransform>
-            						</Image>
-            						<Image Grid.Row="0" x:Name="ImageFront" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Source="{TemplateBinding ImageSource}">
-            							<Image.RenderTransform>
-            								<CompositeTransform />
-            							</Image.RenderTransform>
+                                    <Image Grid.Row="0" x:Name="ImageBack" Opacity="0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Source="{TemplateBinding ImageSource}">
+                                        <Image.RenderTransform>
+                                            <CompositeTransform />
+                                        </Image.RenderTransform>
+                                    </Image>
+                                    <Image Grid.Row="0" x:Name="ImageFront" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Source="{TemplateBinding ImageSource}">
+                                        <Image.RenderTransform>
+                                            <CompositeTransform />
+                                        </Image.RenderTransform>
 
-            						</Image>
+                                    </Image>
 
-            					</Grid>
-            				</Grid>
+                                </Grid>
+                            </Grid>
             			</ControlTemplate>
             		</Setter.Value>
             	</Setter>
+            </Style>
+            <Style x:Key="ImageButtonStyle2" TargetType="Controls:ImageButton">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+                <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+                <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+                <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+                <Setter Property="Padding" Value="10,5,10,6"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Controls:ImageButton">
+                            <Grid Background="Transparent" Margin="12">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="MouseOver"/>
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ImageBack">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.6" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="ImageBack">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="ImageBack">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3" />
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <TextBlock Text="{TemplateBinding TextContent}" Foreground="{TemplateBinding Foreground}" FontSize="12" VerticalAlignment="Bottom" FontFamily="Portable User Interface" TextAlignment="Center" />
+                                <Grid Margin="0" Height="42" Width="42">
+
+                                    <Image Grid.Row="0" x:Name="ImageBack" Opacity="0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Source="{TemplateBinding ImageSource}">
+                                        <Image.RenderTransform>
+                                            <CompositeTransform />
+                                        </Image.RenderTransform>
+                                    </Image>
+                                    <Image Grid.Row="0" x:Name="ImageFront" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Source="{TemplateBinding ImageSource}">
+                                        <Image.RenderTransform>
+                                            <CompositeTransform />
+                                        </Image.RenderTransform>
+
+                                    </Image>
+
+                                </Grid>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
             <!--<Style x:Key="ImageButtonStyle2" TargetType="Controls:ImageButton">
                 <Setter Property="Background" Value="Transparent"/>
@@ -228,7 +289,14 @@
             					<Border x:Name="MainBorder" BorderBrush="{TemplateBinding BorderBrush}"  Background="{TemplateBinding Background}" />
             					<Border x:Name="ReadonlyBorder" BorderBrush="{StaticResource PhoneDisabledBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Margin="{StaticResource PhoneTouchTargetOverhang}" Visibility="Collapsed"/>
             					<Border x:Name="border" BorderBrush="Transparent"  Background="Transparent"  >
-                                    <ContentControl x:Name="ContentElement" BorderThickness="0"     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}"/>
+                                    <ContentControl x:Name="ContentElement" BorderThickness="0"    
+                                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}" 
+                                                    VerticalAlignment="{TemplateBinding VerticalAlignment}" 
+                                                    
+                                                    Foreground="{TemplateBinding Foreground}" 
+                                                    FontFamily="{TemplateBinding FontFamily}"/>
 
             						<!--<TextBlock x:Name="ContentElement"     HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Run>QQ反馈群:  </Run>

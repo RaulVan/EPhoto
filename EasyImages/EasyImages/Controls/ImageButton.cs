@@ -22,6 +22,19 @@ namespace EasyImages.Controls
 
         public static readonly DependencyProperty ImageSourceProperty =
             DependencyProperty.RegisterAttached("ImageSource", typeof(ImageSource), typeof(ImageButton), null);
+        public static readonly DependencyProperty TextContentProperty =
+DependencyProperty.Register(
+    "TextContent",
+    typeof(String),
+    typeof(ImageButton),
+    null);
+
+
+        public String TextContent
+        {
+            get { return (String)GetValue(TextContentProperty); }
+            set { SetValue(TextContentProperty, value); }
+        }
 
     }
 }

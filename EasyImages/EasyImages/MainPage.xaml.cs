@@ -20,6 +20,12 @@ namespace EasyImages
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+            this.Loaded += MainPage_Loaded;
+        }
+
+        void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         // Sample code for building a localized ApplicationBar

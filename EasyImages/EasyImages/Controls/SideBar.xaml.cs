@@ -19,6 +19,9 @@ using Microsoft.Devices;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework.Media;
+using EasyImages.Controls;
+using EasyImages.Method;
+
 //using Brain.Animate;
 //using Brain.Animate.Extensions;
 
@@ -59,7 +62,9 @@ namespace YiWen.Controls
             //    rectangle.Fill = new SolidColorBrush(ConvertFromString(colorstrs[displayIndex]));
             //}
             //gridMain.MouseMove += gridMain_MouseMove;
-            
+            FontFamilyHelper helper=new FontFamilyHelper ();
+            this.listFont.ItemsSource = helper.LoadFont();
+            this.listFont.DataContext = helper.LoadFont();
         }
 
       
@@ -200,6 +205,12 @@ namespace YiWen.Controls
         private void gridMainGestureListener_DragCompleted(object sender, DragCompletedGestureEventArgs e)
         {
 
+        }
+
+
+        private void UpdateTextBoxFontSize(Point delta)
+        {
+            //var newPosition=new Point()
         }
 
 
@@ -475,6 +486,9 @@ namespace YiWen.Controls
             {
                 OnOfflineClick(this, e);
             }
+
+            FontFamilyHelper.LoadIsoFontFamilyFile("BRADHITC.TTF", "Bradley Hand ITC", textBlock);
+            FontFamilyHelper.LoadIsoFontFamilyFile("msyhbd.TTC", "Microsoft YaHei UI", txtMsg);
         }
 
         private void txtAboutUs_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -498,6 +512,11 @@ namespace YiWen.Controls
         int tapIndex = 0;
         private void ImageButton_Click(object sender, RoutedEventArgs e)
         {
+            if (image.Source!=null)
+            {
+                pivotPanel.SelectedIndex = 0;
+                return;
+            }
             if (tapIndex < colorstrs.Count)
             {
                 tapIndex++;
@@ -819,7 +838,11 @@ namespace YiWen.Controls
 
         private void btnText_Click(object sender, RoutedEventArgs e)
         {
+            //光标移到最后
+            txtMsg.SelectionStart = txtMsg.Text.Length;
+            txtMsg.SelectionLength = 0;
             txtMsg.Focus();
+            pivotPanel.SelectedIndex = 1;
         }
 
         private void btnTextAlignmentLeft_Click(object sender, RoutedEventArgs e)
@@ -845,6 +868,53 @@ namespace YiWen.Controls
         private void btnTextAlignmentTop_Click(object sender, RoutedEventArgs e)
         {
             txtMsg.VerticalAlignment = VerticalAlignment.Top;
+        }
+
+        private void btnTextAlignment_Click(object sender, RoutedEventArgs e)
+        {
+            ImageButton button=(sender as ImageButton);
+
+            switch (button.Tag.ToString())
+            {
+                case "TextAlignmentLeft":
+                    txtMsg.TextAlignment = TextAlignment.Left;
+                    break;
+                case "TextAlignmentRight":
+                    txtMsg.TextAlignment = TextAlignment.Right;
+                    break;
+                case "TextAlignmentCenter":
+                    txtMsg.TextAlignment = TextAlignment.Center;
+                    break;
+                case "TextAlignmentJustify"://不支持Justify
+                    txtMsg.VerticalContentAlignment = VerticalAlignment.Center;
+                    txtMsg.HorizontalContentAlignment = HorizontalAlignment.Center;
+                    break;
+                case "TextAlignmentTop":
+                    txtMsg.VerticalContentAlignment = VerticalAlignment.Top;
+                    break;
+                case "TextAlignmentBottom":
+                    txtMsg.VerticalContentAlignment = VerticalAlignment.Bottom;
+                    break;
+                case "TextAlignmentHLeft":
+                    txtMsg.HorizontalContentAlignment = HorizontalAlignment.Left;
+                    break;
+                case "TextAlignmentHRight":
+                    txtMsg.HorizontalContentAlignment = HorizontalAlignment.Right;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        private void ColorSlider_ColorChanged(object sender, Color color)
+        {
+            textBlock.Foreground = new SolidColorBrush(color);
+        }
+
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
 

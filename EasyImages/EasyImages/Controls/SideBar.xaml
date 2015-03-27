@@ -8,23 +8,93 @@
              	xmlns:toolkits="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
              xmlns:bam="clr-namespace:Brain.Animate;assembly=AnimationManager.WP8"
     xmlns:Controls="clr-namespace:EasyImages.Controls" x:Class="YiWen.Controls.SideBar"
+  
     mc:Ignorable="d"
     d:DesignHeight="800" d:DesignWidth="480">
-    
+
     <UserControl.FontSize>
         <StaticResource ResourceKey="PhoneFontSizeNormal"/>
     </UserControl.FontSize>
     <UserControl.Foreground>
         <StaticResource ResourceKey="PhoneForegroundBrush"/>
     </UserControl.Foreground>
+    <UserControl.Resources>
+        <Style x:Key="ListBoxItemStyle1" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="LayoutRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                       
+                                    </VisualState>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Disabled">
+                                       
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected">
+                                       
+                                    </VisualState>
+                                    <VisualState x:Name="Selected">
 
+                                       
+
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        
+                            <Grid x:Name="ContentContainer" Margin="0,36">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                             
+                                <Image Width="120" Height="120"  Grid.Column="1" Source="/Images/b.png" Stretch="UniformToFill" HorizontalAlignment="Right">
+                                    <!--<bam:AnimationTrigger.Open>
+                                        <bam:ScaleInAnimation Delay="1" Duration="1"/>
+                                    </bam:AnimationTrigger.Open>-->
+                                </Image>
+                                <Image x:Name="image" Width="120" Height="120"  Grid.Column="1" Source="/Images/r.png" Stretch="UniformToFill" Visibility="Collapsed">
+                                    <!--<bam:AnimationTrigger.Open>
+                                        <bam:ScaleInAnimation Delay="1" Duration="1"/>
+                                    </bam:AnimationTrigger.Open>-->
+                                </Image>
+                                <Grid VerticalAlignment="Bottom" Margin="0,0,0,6">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="textBlock" Text="Binding Name}" Foreground="Black" FontSize="40" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                    <TextBlock x:Name="textBlock1" Grid.Row="1" Text="Binding Name}" Foreground="Black" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" TextAlignment="Right" FontFamily="Portable User Interface"/>
+                                </Grid>
+
+
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontFamily" Value="Portable User Interface"/>
+        </Style>
+    </UserControl.Resources>
     <Grid x:Name="LayoutRoot" Background="Transparent"
          >
         <Grid x:Name="DownView" Background="#FFD1D1D1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
+            <TextBlock x:Name="textBlock"  Grid.RowSpan="2" Text="劳尔R7" Grid.Column="1" FontSize="{Binding Value, ElementName=slider, Mode=TwoWay}" Foreground="Black"  Margin="12,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <StackPanel  Margin="0,30,0,0">
                 <Grid >
                     <Grid.ColumnDefinitions>
@@ -39,7 +109,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Margin="12" Text="已报道" Grid.Column="1" FontSize="30" Foreground="Black" FontFamily="Segoe WP Black" Visibility="Collapsed"  />
+
 
                     <TextBlock Grid.Row="1" Margin="12"  Grid.Column="1" Visibility="Collapsed" 
                                >
@@ -54,19 +124,25 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock x:Name="txtFavorites" Margin="12" Text="我的收藏" Grid.Column="1" FontSize="30" Foreground="Black" FontFamily="Segoe WP Black"  Tap="txtFavorites_Tap" Visibility="Collapsed" />
+                    <!--<TextBlock x:Name="txtFavorites" Margin="12" Text="我的收藏" Grid.Column="1" FontSize="30" Foreground="Black"  Tap="txtFavorites_Tap" Visibility="Visible" />-->
+                    <TextBlock x:Name="txtOffline" Grid.Row="0" Margin="12" Text="Text" Grid.Column="1" FontSize="30" Foreground="Black"  Tap="txtOffline_Tap" />
 
-                    <TextBlock x:Name="txtOffline" Grid.Row="1" Margin="12" Text="下载字体" Grid.Column="1" FontSize="30" Foreground="Black" FontFamily="Segoe WP Black"  Tap="txtOffline_Tap" />
-                    
+                    <Slider x:Name="slider" Grid.Row="1" SmallChange="1" Minimum="21" Maximum="101" Width="280" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FF0D978A" Value="22" Foreground="#FF056064" />
+
+
+
+                  
                 </Grid>
 
-
             </StackPanel>
-            <Grid Grid.Row="1">
-                <TextBlock x:Name="txtAboutUs" Grid.Row="2" Margin="12"  Grid.Column="1" FontSize="30" Foreground="Black" FontFamily="Segoe WP Black"  Tap="txtAboutUs_Tap" >
+            <ListBox Grid.Row="1" x:Name="listFont"  ItemContainerStyle="{StaticResource ListBoxItemStyle1}" HorizontalAlignment="Right" SelectionChanged="listBox_SelectionChanged" >
+
+            </ListBox>
+            <Grid Grid.Row="2">
+                <TextBlock x:Name="txtAboutUs" Grid.Row="2" Margin="12"  Grid.Column="1" FontSize="30" Foreground="Black"  Tap="txtAboutUs_Tap" >
                    <Run Text="关于" FontSize="22"></Run> 
 					
-					<Run Foreground="#FF23C347" FontSize="30"  Text="RaulStudio" FontFamily="Bradley Hand ITC"  />
+					<Run Foreground="#FF23C347" FontSize="30"  Text="RaulStudio"  />
 
                 </TextBlock>
 
@@ -126,42 +202,83 @@
 
                         </Image>
                         <Image x:Name="iamgeMark" Source="/Images/mark60.png" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Height="40"  Width="60" Stretch="None"/>
-                        <TextBox x:Name="txtMsg" VerticalAlignment="Center"  TextWrapping="Wrap"  Text="修" MaxLength="140" Style="{StaticResource TextBoxStyle1}" FontSize="36" TextOptions.TextHintingMode="Animated"   AcceptsReturn="True" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PhoneAccentBrush}"  HorizontalAlignment="Center" TextAlignment="Center" />
+                        <TextBox x:Name="txtMsg"  TextWrapping="Wrap"  Text="Raul" MaxLength="140" 
+                                 Style="{StaticResource TextBoxStyle1}" 
+                                 FontSize="{Binding Value, ElementName=slider, Mode=TwoWay}" TextOptions.TextHintingMode="Animated"  
+                                 AcceptsReturn="True" Background="{x:Null}" 
+                                 BorderBrush="{x:Null}" 
+                                 Foreground="{Binding Foreground, ElementName=textBlock, Mode=OneWay}" 
+                                 
+                                 MaxWidth="440" MaxHeight="440" TextAlignment="Center" FontFamily="{Binding FontFamily.Source, ElementName=textBlock, Mode=OneWay}" >
+
+                        </TextBox>
                     </Grid>
-                    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0" Background="#FF1E1E1E">
+                    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0" Background="#FF424242">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
 
 
-                                    <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Palette.png" Click="ImageButton_Click" />
+                                    <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  TextContent="背景色" Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Paint-Bucket.png" Click="ImageButton_Click" FontFamily="Portable User Interface" />
                                     <!--<Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Toolkit.Content/ApplicationBar.Add.png" Click="ImageButton_Click_1" />-->
-                                    <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Text.png" x:Name="btnText" Click="btnText_Click" />
-                                    <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Camera.png" x:Name="btnCamera" Click="btnCamera_Click" />
+                                    <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Text.png" x:Name="btnText" Click="btnText_Click" TextContent="文本" />
+                                    <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Camera.png" x:Name="btnCamera" TextContent="相册" Click="btnCamera_Click" />
 
                                 </StackPanel>
-                                <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
-                                    <StackPanel Orientation="Horizontal" Height="90" >
-                                        <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" x:Name="btnTextAlignmentLeft" Click="btnTextAlignmentLeft_Click" />
-                                        <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" x:Name="btnTextAlignmentRight" Click="btnTextAlignmentRight_Click"/>
-                                        <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" x:Name="btnTextAlignmentCenter" Click="btnTextAlignmentCenter_Click" />
-                                        <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" x:Name="btnTextAlignmentTop" Click="btnTextAlignmentTop_Click"/>
-                                        <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png"  x:Name="btnTextAlignmentBottom" Click="btnTextAlignmentBottom_Click"/>
-                                        <Border BorderThickness="2,2,0,0" BorderBrush="White">
-                                            <Grid>
-                                                <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" />
-                                                <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" Margin="90,0,0,0" />
-                                            </Grid>
-                                        </Border>
-                                    </StackPanel>
-                                </ScrollViewer>
-                               
+                                <phone:Pivot x:Name="pivotPanel" SelectedIndex="1" IsLocked="True">
+
+                                    <phone:PivotItem Margin="12,0" Visibility="Collapsed">
+                                        <!--Text-->
+                                        <!--<ScrollViewer VerticalScrollBarVisibility="Disabled"
+                                              HorizontalScrollBarVisibility="Hidden">-->
+                                            <toolkit:WrapPanel Orientation="Horizontal" Height="Auto" >
+
+
+                                                <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" />
+                                                <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" Margin="0,0,0,0" />
+                                                <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" />
+                                                <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" Margin="90,0,0,0" />
+                                                <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" />
+                                                <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Toolkit.Content/ApplicationBar.Select.png" Margin="90,0,0,0" />
+
+                                            </toolkit:WrapPanel>
+                                        <!--</ScrollViewer>-->
+                                        <!--Text-->
+                                    </phone:PivotItem>
+                                    <phone:PivotItem Margin="12,0">
+                                        <!--Text-->
+                                        <!--<ScrollViewer VerticalScrollBarVisibility="Disabled"
+                                              HorizontalScrollBarVisibility="Hidden">-->
+                                            <toolkit:WrapPanel Orientation="Horizontal" Height="Auto" >
+                                            <!--<Border BorderThickness="2,2,0,0" BorderBrush="White">-->
+                                                <Grid>
+                                                    <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Palette-01.png" TextContent="Black"/>
+                                                    <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Palette.png" Margin="90,0,0,0" TextContent="Light" />
+                                                </Grid>
+                                            <!--</Border>-->
+                                            <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Align-Left.png" x:Name="btnTextAlignmentLeft"  Tag="TextAlignmentLeft" Click="btnTextAlignment_Click"  TextContent="左对齐" />
+                                            <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Align-Right.png" x:Name="btnTextAlignmentRight"  Tag="TextAlignmentRight" Click="btnTextAlignment_Click" TextContent="右对齐"/>
+                                            <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Align-Center.png" x:Name="btnTextAlignmentCenter"  Tag="TextAlignmentCenter" Click="btnTextAlignment_Click" TextContent="居中对齐"  />
+
+                                            <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Vertical-Align-Top.png" Tag="TextAlignmentTop" x:Name="btnTextAlignmentTop" Click="btnTextAlignment_Click" TextContent="Top" />
+                                            <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Vertical-Align-Bottom.png"  x:Name="btnTextAlignmentBottom"  Tag="TextAlignmentBottom" Click="btnTextAlignment_Click" TextContent="Bottom"/>
+                                            <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Tag="TextAlignmentJustify" Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Vertical-Align-Center.png" Click="btnTextAlignment_Click" TextContent="Center" />
+                                            <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Tag="TextAlignmentHLeft" Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Horizontal-Align-Left.png" Click="btnTextAlignment_Click" TextContent="Left"/>
+                                            <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Tag="TextAlignmentHRight" Style="{StaticResource ImageButtonStyle2}" ImageSource="/Images/Horizontal-Align-Right.png" Click="btnTextAlignment_Click" TextContent="Right"/>
+                                                
+                                            </toolkit:WrapPanel>
+                                        <!--</ScrollViewer>-->
+                                        <!--Text-->
+                                    </phone:PivotItem>
+                                </phone:Pivot>
+
+
 
                             </StackPanel>
                         </Grid>
@@ -172,8 +289,8 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <!--<StackPanel Orientation="Horizontal" >-->
-                                <!--<Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}"  />-->
-                                <Controls:ImageButton Content="ImageButton"  Grid.Column="1"  VerticalAlignment="Center"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Close.png" x:Name="btnCancel" Click="btnCancel_Click" HorizontalAlignment="Center"/>
+                            <!--<Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Top"  Style="{StaticResource ImageButtonStyle1}"  />-->
+                            <Controls:ImageButton Content="ImageButton"  Grid.Column="1"  VerticalAlignment="Center"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Close.png" x:Name="btnCancel" Click="btnCancel_Click" HorizontalAlignment="Center"/>
 
                             <!--</StackPanel>-->
                             <Controls:ImageButton Content="ImageButton" HorizontalAlignment="Left"  VerticalAlignment="Bottom"  Style="{StaticResource ImageButtonStyle1}" ImageSource="/Images/Left.png" Click="Button_Click" />
