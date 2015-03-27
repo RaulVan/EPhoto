@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="zh-CN" />
-  <App xmlns="" ProductID="{6bd083b8-e087-4529-ad89-8fd9a4a526ea}" Title="7.11 Photo" RuntimeType="Silverlight" Version="0.0.0.1" Genre="apps.normal" Author="7.11 Photo author" Description="7.11 Photo" SDOptOut="true" BackUpOptOut="false" Publisher="ElevenVan" PublisherID="{45cd3fd8-01fb-410a-b65d-9ec6716d54d6}">
+  <App xmlns="" ProductID="{6bd083b8-e087-4529-ad89-8fd9a4a526ea}" Title="EPhoto" RuntimeType="Silverlight" Version="0.0.0.1" Genre="apps.normal" Author="7.11 Photo author" Description="7.11 Phot EPhotoo" SDOptOut="true" BackUpOptOut="false" Publisher="ElevenVan" PublisherID="{45cd3fd8-01fb-410a-b65d-9ec6716d54d6}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -21,7 +21,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>7.11 Photo</Title>
+          <Title>EPhoto</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>

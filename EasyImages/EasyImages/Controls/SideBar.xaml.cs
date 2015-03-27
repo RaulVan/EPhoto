@@ -21,6 +21,7 @@ using System.IO;
 using Microsoft.Xna.Framework.Media;
 using EasyImages.Controls;
 using EasyImages.Method;
+using EasyImages.Model;
 
 //using Brain.Animate;
 //using Brain.Animate.Extensions;
@@ -64,7 +65,7 @@ namespace YiWen.Controls
             //gridMain.MouseMove += gridMain_MouseMove;
             FontFamilyHelper helper=new FontFamilyHelper ();
             this.listFont.ItemsSource = helper.LoadFont();
-            this.listFont.DataContext = helper.LoadFont();
+            this.listFont.DataContext = helper.LoadFont();      
         }
 
       
@@ -487,8 +488,7 @@ namespace YiWen.Controls
                 OnOfflineClick(this, e);
             }
 
-            FontFamilyHelper.LoadIsoFontFamilyFile("BRADHITC.TTF", "Bradley Hand ITC", textBlock);
-            FontFamilyHelper.LoadIsoFontFamilyFile("msyhbd.TTC", "Microsoft YaHei UI", txtMsg);
+          
         }
 
         private void txtAboutUs_Tap(object sender, System.Windows.Input.GestureEventArgs e)
@@ -901,6 +901,12 @@ namespace YiWen.Controls
                 case "TextAlignmentHRight":
                     txtMsg.HorizontalContentAlignment = HorizontalAlignment.Right;
                     break;
+                case "TextLight":
+                    txtMsg.Foreground = new SolidColorBrush(Colors.White);
+                    break;
+                case "TextBlack":
+                    txtMsg.Foreground = new SolidColorBrush(Colors.Black);
+                    break;
                 default:
                     break;
             }
@@ -915,6 +921,11 @@ namespace YiWen.Controls
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            //FontFamilyHelper.LoadIsoFontFamilyFile("msyhbd.TTC", "Microsoft YaHei UI", textBlock);
+            //FontFamilyHelper.LoadIsoFontFamilyFile("msyhbd.TTC", "Microsoft YaHei UI", txtMsg);
+             FontFamilyData font=(sender as ListBox).SelectedItem as FontFamilyData;
+
+            textBlock.FontFamily= txtMsg.FontFamily = new FontFamily(font.FontFamilyUrl);
         }
 
 

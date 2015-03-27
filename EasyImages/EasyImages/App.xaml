@@ -55,7 +55,7 @@
             							<VisualState x:Name="Disabled"/>
             						</VisualStateGroup>
             					</VisualStateManager.VisualStateGroups>
-                                <TextBlock Text="{TemplateBinding TextContent}" Foreground="{TemplateBinding Foreground}" FontSize="12" VerticalAlignment="Bottom" FontFamily="Portable User Interface" TextAlignment="Center" />
+                                <TextBlock Text="{TemplateBinding TextContent}" Foreground="White" FontSize="12" VerticalAlignment="Bottom" FontFamily="Portable User Interface" TextAlignment="Center" Margin="0,0,0,-16"/>
                                 <Grid Margin="0" Height="42" Width="42">
 
                                     <Image Grid.Row="0" x:Name="ImageBack" Opacity="0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Source="{TemplateBinding ImageSource}">
@@ -111,7 +111,8 @@
                                         <VisualState x:Name="Disabled"/>
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
-                                <TextBlock Text="{TemplateBinding TextContent}" Foreground="{TemplateBinding Foreground}" FontSize="12" VerticalAlignment="Bottom" FontFamily="Portable User Interface" TextAlignment="Center" />
+                                <TextBlock Text="{TemplateBinding TextContent}" Foreground="White" FontSize="12" VerticalAlignment="Bottom" FontFamily="Portable User Interface" TextAlignment="Center" Margin="0,0,0,-16"/>
+                               
                                 <Grid Margin="0" Height="42" Width="42">
 
                                     <Image Grid.Row="0" x:Name="ImageBack" Opacity="0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Source="{TemplateBinding ImageSource}">

@@ -8,6 +8,7 @@ using System.IO.IsolatedStorage;
 using Windows.Storage;
 using System.Windows.Controls;
 using EasyImages.Model;
+using System.Windows;
 
 namespace EasyImages.Method
 {
@@ -17,16 +18,34 @@ namespace EasyImages.Method
 
       public List<FontFamilyData> LoadFont()
       {
-          List<FontFamilyData> list = new List<FontFamilyData>();
-          for (int i = 0; i < 20; i++)
+
+          //Application.GetResourceStream()
+
+          List<FontFamilyData> list = new List<FontFamilyData>()
           {
-              list.Add(new FontFamilyData()
-                  {
-                      FontFamilyKey = "BRADHITC",
-                      FontFamilyUrl = "",
-                      FontName = "Bradley Hand ITC",
-                  });
-          }
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Segoe UI Light", FontName="Segoe UI Light"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Microsoft YaHei Light", FontName="Microsoft YaHei Light"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Harlow Solid Italic", FontName="Harlow Solid Italic"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Freestyle Script", FontName="Freestyle Script"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#French Script MT", FontName="French Script MT"},
+
+              //new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#STCaiyun", FontName="STCaiyun"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Papyrus", FontName="Papyrus"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#STCaiyun", FontName="STCaiyun"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Old English Text MT", FontName="Old English Text MT"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Bradley Hand ITC", FontName="Bradley Hand ITC"},
+
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#French Script MT", FontName="French Script MT"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Jokerman", FontName="Jokerman"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Kunstler Script", FontName="Kunstler Script"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Ravie", FontName="Ravie"},
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Vladimir Script", FontName="Vladimir Script"},
+
+              new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="/EasyImages;component/Fonts/Fonts.zip#Matura MT Script Capitals", FontName="Matura MT Script Capitals"},
+              //new FontFamilyData(){ FontFamilyKey="", FontFamilyUrl="", FontName="atura MT Script Capitals"},
+          };
+       
+             
           return list;
       }
 
@@ -50,7 +69,7 @@ namespace EasyImages.Method
               isoStream.Close();
                   return textBox;
               }
-          }
+          } 
       }
 
       /// <summary>

@@ -3,7 +3,7 @@
   <Identity Name="23093ElevenVan.EPhoto" Publisher="CN=899E54CB-AA9A-4232-ADB8-E448E52C4D06" Version="0.0.0.1" />
   <mp:PhoneIdentity PhoneProductId="6bd083b8-e087-4529-ad89-8fd9a4a526ea" PhonePublisherId="45cd3fd8-01fb-410a-b65d-9ec6716d54d6" />
   <Properties>
-    <DisplayName>7.11 Photo</DisplayName>
+    <DisplayName>EPhoto</DisplayName>
     <PublisherDisplayName>ElevenVan</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="AGHost.exe" EntryPoint="MainPage.xaml">
-      <m3:VisualElements DisplayName="7.11 Photo" Square150x150Logo="Assets\SquareTile150x150.png" Square44x44Logo="Assets\Logo.png" Description="7.11 Photo" ForegroundText="light" BackgroundColor="#464646">
+      <m3:VisualElements DisplayName="EPhoto" Square150x150Logo="Assets\SquareTile150x150.png" Square44x44Logo="Assets\Logo.png" Description="EPhoto" ForegroundText="light" BackgroundColor="#464646">
         <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png">
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />

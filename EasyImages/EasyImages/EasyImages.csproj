@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppConfig.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\SideBar.xaml.cs">
       <DependentUpon>SideBar.xaml</DependentUpon>
@@ -151,13 +152,6 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\BadgeLogo.png" />
-    <Content Include="Assets\Logo.png" />
-    <Content Include="Assets\SplashScreen.png" />
-    <Content Include="Assets\SquareTile150x150.png" />
-    <Content Include="Assets\SquareTile71x71.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\WideLogo.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -186,6 +180,7 @@
     <Content Include="Images\Paint-Bucket.png" />
     <Content Include="Images\Palette-01.png" />
     <Content Include="Images\Palette.png" />
+    <Content Include="Images\Recycle-Bin .png" />
     <Content Include="Images\Share.png" />
     <Content Include="Images\Text.png" />
     <Content Include="Images\tst.png" />
@@ -258,6 +253,57 @@
   </ItemGroup>
   <ItemGroup>
     <BlendEmbeddedFont Include="Fonts\VLADIMIR.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\FREESCPT.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\HARLOWSI.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\PAPYRUS.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\segoeuil.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\seguili.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\STCAIYUN.TTF">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\OLDENGL.TTF">
       <IsSystemFont>True</IsSystemFont>
       <All>True</All>
       <AutoFill>True</AutoFill>
